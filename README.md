@@ -76,3 +76,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 5. body-parser
 6. mongoose
 7. shortid
+8. redux
+9. react-redux
+10. redux-thunk
