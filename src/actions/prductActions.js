@@ -16,6 +16,7 @@ export const fetchProducts = () => async (dispatch) => {
 };
 
 export const filterProducts = (products, size) => (dispatch) => {
+  console.log("filtering....  ", size);
   dispatch({
     type: FILTER_PRODUCTS_BY_SIZE,
     payload: {
@@ -30,10 +31,11 @@ export const filterProducts = (products, size) => (dispatch) => {
 
 export const sortProducts = (filteredProducts, sort) => (dispatch) => {
   const sortedProducts = filteredProducts.slice();
+  //console.log("sorting.....  ",so)
   if (sort === "") {
-    sortProducts.sort((a, b) => (a._id > b._id ? 1 : -1));
+    sortedProducts.sort((a, b) => (a._id > b._id ? 1 : -1));
   } else {
-    sortProducts.sort((a, b) =>
+    sortedProducts.sort((a, b) =>
       sort === "lowest"
         ? a.price > b.price
           ? 1

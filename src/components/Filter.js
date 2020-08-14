@@ -4,13 +4,13 @@ import { filterProducts, sortProducts } from "../actions/prductActions";
 
 class Filter extends Component {
   render() {
-    console.log(this.props.filterProducts);
-    return this.props.filteredProducts ? (
+    console.log(this.props.filteredProducts);
+    return !this.props.filteredProducts ? (
       <div>Loading....</div>
     ) : (
       <div className="filter">
         <div className="filter-result">
-          {this.props.filterProducts.length} Products
+          {this.props.filteredProducts.length} Products
         </div>
         <div className="filter-sort">
           Order{" "}
