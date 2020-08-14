@@ -1,0 +1,61 @@
+// import { ADD_TO_CART, REMOVE_FROM_CART } from "../types";
+
+// export const addToCart = (items, product) => (getState, dispatch) => {
+//   const cartItems = items.slice(); // getState().cart.cartItems.slice();
+//   let alreadyExists = false;
+//   cartItems.forEach((x) => {
+//     if (x._id === product._id) {
+//       alreadyExists = true;
+//       x.count++;
+//     }
+//   });
+//   if (!alreadyExists) {
+//     cartItems.push({ ...product, count: 1 });
+//   }
+//   dispatch({
+//     type: ADD_TO_CART,
+//     payload: {
+//       cartItems,
+//     },
+//   });
+//   localStorage.setItem("cartItems", JSON.stringify(cartItems));
+// };
+
+// export const removeFromCart = (items, product) => (dispatch, getState) => {
+//   const cartItems = items.slice().filter((x) => x._id !== product._id);
+//   dispatch({
+//     type: REMOVE_FROM_CART,
+//     payload: { cartItems },
+//   });
+//   localStorage.setItem("cartItems", JSON.stringify(cartItems));
+// };
+import { ADD_TO_CART, REMOVE_FROM_CART } from "../types";
+
+export const addToCart = (product) => (dispatch, getState) => {
+  const cartItems = getState().cart.cartItems.slice();
+  let alreadyExists = false;
+  console.log(product);
+  cartItems.forEach((x) => {
+    if (x._id === product._id) {
+      alreadyExists = true;
+      x.count++;
+    }
+  });
+  if (!alreadyExists) {
+    cartItems.push({ ...product, count: 1 });
+  }
+  dispatch({
+    type: ADD_TO_CART,
+    payload: { cartItems },
+  });
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+};
+
+export const removeFromCart = (product) => (dispatch, getState) => {
+  console.log(getState);
+  const cartItems = getState()
+    .cart.cartItems.slice()
+    .filter((x) => x._id !== product._id);
+  dispatch({ type: REMOVE_FROM_CART, payload: { cartItems } });
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+};
