@@ -21,6 +21,7 @@ import { productsReducer } from "./reducers/productsReducer";
 
 const initialState = {};
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+console.log("in store.js");
 const store = createStore(
   combineReducers({
     products: productsReducer,
