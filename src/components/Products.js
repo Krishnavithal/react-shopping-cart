@@ -24,6 +24,7 @@ class Products extends Component {
   };
   render() {
     const { product } = this.state;
+    console.log(this.props);
     return (
       <div>
         <Fade bottom cascade>
